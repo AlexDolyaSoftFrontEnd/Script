@@ -1,73 +1,107 @@
 // ===============================
 // Selectors
 // ===============================
-const title = document.getElementById('title');
-const qs = (s) => document.querySelector(s);
+// Коммит: добавлены универсальные селекторы для ES5
+
+var title = document.getElementById('title');
+
+function qs(selector) {
+  return document.querySelector(selector);
+}
+
+function qsa(selector) {
+  return document.querySelectorAll(selector);
+}
 
 // ===============================
 // Text / HTML
 // ===============================
-qs('#textBtn').addEventListener('click', () => {
-  qs('#text').textContent = 'Текст изменён через JS';
+// Коммит: управление textContent и innerHTML
+
+qs('#textBtn').addEventListener('click', function () {
+  qs('#text').textContent = 'Текст изменён через JavaScript (ES5)';
+});
+
+qs('#htmlBtn').addEventListener('click', function () {
+  qs('#text').innerHTML = '<strong>HTML</strong> изменён';
 });
 
 // ===============================
 // Classes
 // ===============================
-qs('#classBtn').addEventListener('click', () => {
+// Коммит: переключение классов через classList
+
+qs('#classBtn').addEventListener('click', function () {
   qs('#classBox').classList.toggle('active');
 });
 
 // ===============================
 // Attributes
 // ===============================
-qs('#attrBtn').addEventListener('click', () => {
+// Коммит: работа с HTML-атрибутами
+
+qs('#attrBtn').addEventListener('click', function () {
   qs('#img').setAttribute(
     'src',
-    'https://via.placeholder.com/100/0000FF'
+    'https://via.placeholder.com/100/ff0000'
   );
 });
 
 // ===============================
 // Dataset
 // ===============================
-const dataBox = qs('#dataBox');
-console.log(dataBox.dataset.id);
-console.log(dataBox.dataset.status);
+// Коммит: чтение data-атрибутов
+
+var dataBox = qs('#dataBox');
+
+console.log('ID:', dataBox.dataset.id);
+console.log('Status:', dataBox.dataset.status);
 
 // ===============================
 // Create / Remove
 // ===============================
-const list = qs('#list');
-let counter = 1;
+// Коммит: динамическое создание и удаление DOM-узлов
 
-qs('#addItem').onclick = () => {
-  const li = document.createElement('li');
-  li.textContent = `Item ${counter++}`;
-  list.append(li);
+var list = qs('#list');
+var counter = 1;
+
+qs('#addItem').onclick = function () {
+  var li = document.createElement('li');
+  li.className = 'item';
+  li.appendChild(document.createTextNode('Item ' + counter));
+  counter += 1;
+
+  list.appendChild(li);
 };
 
-qs('#clearList').onclick = () => {
+qs('#clearList').onclick = function () {
   list.innerHTML = '';
+  counter = 1;
 };
 
 // ===============================
 // Event Delegation
 // ===============================
-qs('#delegation').addEventListener('click', (e) => {
-  if (e.target.classList.contains('item')) {
-    alert(e.target.textContent);
+// Коммит: делегирование событий
+
+qs('#delegation').addEventListener('click', function (e) {
+  var target = e.target;
+
+  if (target && target.classList.contains('item')) {
+    alert('Clicked: ' + target.textContent);
   }
 });
 
 // ===============================
 // Form + FormData
 // ===============================
-qs('#form').addEventListener('submit', (e) => {
+// Коммит: обработка формы без перезагрузки страницы
+
+qs('#form').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const data = new FormData(e.target);
-  console.log(data.get('email'));
+  var formData = new FormData(e.target);
+  console.log('Email:', formData.get('email'));
 
   e.target.reset();
 });
@@ -75,36 +109,58 @@ qs('#form').addEventListener('submit', (e) => {
 // ===============================
 // Inputs
 // ===============================
-qs('#inputBtn').onclick = () => {
-  console.log('Input:', qs('#input').value);
-  console.log('Checked:', qs('#checkbox').checked);
+// Коммит: чтение значений input и checkbox
+
+qs('#inputBtn').onclick = function () {
+  console.log('Input value:', qs('#input').value);
+  console.log('Checkbox checked:', qs('#checkbox').checked);
 };
 
 // ===============================
 // Scroll
 // ===============================
-qs('#scrollBtn').onclick = () => {
-  window.scrollBy({ top: 200, behavior: 'smooth' });
+// Коммит: программный скролл страницы
+
+qs('#scrollBtn').onclick = function () {
+  window.scrollBy({
+    top: 200,
+    behavior: 'smooth'
+  });
 };
 
 // ===============================
-// Sizes / position
+// Sizes / Position
 // ===============================
+// Коммит: измерение размеров и позиции элемента
+
 console.log('Title width:', title.offsetWidth);
-console.log(title.getBoundingClientRect());
+console.log('Title rect:', title.getBoundingClientRect());
 
 // ===============================
-// Template
+// Style manipulation
 // ===============================
-qs('#tplBtn').onclick = () => {
-  const tpl = qs('#tpl');
-  const clone = tpl.content.cloneNode(true);
-  qs('#tplContainer').append(clone);
+// Коммит: управление inline-стилями
+
+qs('#styleBtn').onclick = function () {
+  var box = qs('#styleBox');
+  box.style.backgroundColor = '#ffeeba';
+  box.style.borderColor = '#f0ad4e';
+};
+
+// ===============================
+// Show / Hide
+// ===============================
+// Коммит: управление видимостью элементов
+
+qs('#toggleBtn').onclick = function () {
+  qs('#toggleBox').classList.toggle('hidden');
 };
 
 // ===============================
 // DOM ready
 // ===============================
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded');
+// Коммит: безопасная инициализация после загрузки DOM
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM полностью загружен');
 });

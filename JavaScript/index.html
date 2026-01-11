@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>DOM ES6 Examples</title>
+  <meta charset="UTF-8">
+  <title>DOM Examples</title>
 
   <style>
     body {
@@ -37,87 +37,81 @@
 </head>
 <body>
 
-  <h1 id="title">Examples</h1>
+<h1 id="title">DOM ES5 Examples</h1>
 
-  <!-- Text / HTML -->
-  <section>
-    <h2>Text / HTML</h2>
-    <div id="text" class="box">Исходный текст</div>
-    <button id="textBtn">Изменить текст</button>
-  </section>
+<section>
+  <h2>Text / HTML</h2>
+  <div id="text" class="box">Исходный текст</div>
+  <button id="textBtn">Изменить текст</button>
+  <button id="htmlBtn">Изменить HTML</button>
+</section>
 
-  <!-- Classes -->
-  <section>
-    <h2>Classes</h2>
-    <div id="classBox" class="box">Box</div>
-    <button id="classBtn">Toggle class</button>
-  </section>
+<section>
+  <h2>Classes</h2>
+  <div id="classBox" class="box">Box</div>
+  <button id="classBtn">Toggle class</button>
+</section>
 
-  <!-- Attributes -->
-  <section>
-    <h2>Attributes</h2>
-    <img id="img" src="https://via.placeholder.com/100" />
-    <button id="attrBtn">Сменить картинку</button>
-  </section>
+<section>
+  <h2>Attributes</h2>
+  <img id="img" src="https://via.placeholder.com/100">
+  <button id="attrBtn">Сменить картинку</button>
+</section>
 
-  <!-- Dataset -->
-  <section>
-    <h2>Dataset</h2>
-    <div id="dataBox" class="box" data-id="10" data-status="active">
-      Dataset box
-    </div>
-  </section>
+<section>
+  <h2>Dataset</h2>
+  <div id="dataBox" class="box" data-id="10" data-status="active">
+    Dataset box
+  </div>
+</section>
 
-  <!-- Create / remove -->
-  <section>
-    <h2>Create / Remove</h2>
-    <ul id="list"></ul>
-    <button id="addItem">Добавить</button>
-    <button id="clearList">Очистить</button>
-  </section>
+<section>
+  <h2>Create / Remove</h2>
+  <ul id="list"></ul>
+  <button id="addItem">Добавить</button>
+  <button id="clearList">Очистить</button>
+</section>
 
-  <!-- Delegation -->
-  <section>
-    <h2>Event Delegation</h2>
-    <ul id="delegation">
-      <li class="item">Item 1</li>
-      <li class="item">Item 2</li>
-    </ul>
-  </section>
+<section>
+  <h2>Event Delegation</h2>
+  <ul id="delegation">
+    <li class="item">Item 1</li>
+    <li class="item">Item 2</li>
+  </ul>
+</section>
 
-  <!-- Form -->
-  <section>
-    <h2>Form</h2>
-    <form id="form">
-      <input name="email" placeholder="Email" required />
-      <button>Send</button>
-    </form>
-  </section>
+<section>
+  <h2>Form</h2>
+  <form id="form">
+    <input name="email" placeholder="Email" required>
+    <button type="submit">Send</button>
+  </form>
+</section>
 
-  <!-- Input / checkbox -->
-  <section>
-    <h2>Inputs</h2>
-    <input id="input" />
-    <input type="checkbox" id="checkbox" />
-    <button id="inputBtn">Check</button>
-  </section>
+<section>
+  <h2>Inputs</h2>
+  <input id="input">
+  <input type="checkbox" id="checkbox">
+  <button id="inputBtn">Check</button>
+</section>
 
-  <!-- Scroll -->
-  <section style="height: 300px;">
-    <h2>Scroll</h2>
-    <button id="scrollBtn">Scroll down</button>
-  </section>
+<section style="height: 300px;">
+  <h2>Scroll</h2>
+  <button id="scrollBtn">Scroll down</button>
+</section>
 
-  <!-- Template -->
-  <section>
-    <h2>Template</h2>
-    <template id="tpl">
-      <div class="box">Template item</div>
-    </template>
-    <div id="tplContainer"></div>
-    <button id="tplBtn">Render template</button>
-  </section>
+<section>
+  <h2>Styles</h2>
+  <div id="styleBox" class="box">Styled box</div>
+  <button id="styleBtn">Change styles</button>
+</section>
 
-  <script src="Dom.js"></script>
+<section>
+  <h2>Show / Hide</h2>
+  <div id="toggleBox" class="box">Toggle me</div>
+  <button id="toggleBtn">Toggle visibility</button>
+</section>
+
+<script src="dom-es5.js"></script>
 </body>
 </html>
