@@ -30,6 +30,26 @@ export default function App() {
       <SizeExample />
       <IntersectionExample />
       <PortalExample />
+
+      // FunctExample
+      <UserCard user={user} />
+      <UserCardShort {...user} />
+      <Counter />
+      <InlineExample />
+      <Parent />
+      <FunctionalUpdate />
+      <CallbackExample />
+      <Toggle />
+      <TodoApp />
+      <InputFocus />
+
+      <DataProvider>
+        {items => (
+          <ul>
+            {items.map(i => <li key={i}>{i}</li>)}
+          </ul>
+        )}
+      </DataProvider>
     </>
   );
 }
