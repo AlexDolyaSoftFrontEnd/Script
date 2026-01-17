@@ -1,34 +1,84 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function FocusInputExample() {
-  // useRef создаёт ссылку на DOM-элемент input
+  // Ссылка на DOM-элемент input
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  // Состояние для отображения введённого текста
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+
   const handleFocus = () => {
-    // Проверяем, что элемент существует
     if (inputRef.current) {
-      // Программно устанавливаем фокус
       inputRef.current.focus();
     }
   };
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h2>useRef: работа с DOM</h2>
+  const handleReadValue = () => {
+    if (!inputRef.current) return;
 
-      {/* Привязываем ref к input */}
+    const currentValue = inputRef.current.value.trim();
+
+    if (!currentValue) {
+      setError("Поле не должно быть пустым");
+      return;
+    }
+
+    setError("");
+    setValue(currentValue);
+  };
+
+  const handleClear = () => {
+    if (inputRef.current) {
+      inputRef.current.value = "";
+      inputRef.current.focus();
+    }
+
+    setValue("");
+    setError("");
+  };
+
+  const handleSelectText = () => {
+    if (inputRef.current) {
+      inputRef.current.select();
+    }
+  };
+
+  return (
+    <div style={{ padding: "20px", maxWidth: "400px" }}>
+      <h2>useRef: работа с input</h2>
+
       <input
         ref={inputRef}
         type="text"
-        placeholder="Нажми кнопку для фокуса"
+        placeholder="Введите текст"
+        style={{
+          width: "100%",
+          padding: "8px",
+          border: error ? "1px solid red" : "1px solid #ccc",
+        }}
       />
 
-      <br />
-      <br />
+      {error && (
+        <p style={{ color: "red", marginTop: "6px" }}>
+          {error}
+        </p>
+      )}
 
-      <button onClick={handleFocus}>
-        Установить фокус
-      </button>
+      <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
+        <button onClick={handleFocus}>Фокус</button>
+        <button onClick={handleReadValue}>Считать</button>
+        <button onClick={handleSelectText}>Выделить</button>
+        <button onClick={handleClear}>Очистить</button>
+      </div>
+
+      {value && (
+        <div style={{ marginTop: "16px" }}>
+          <strong>Введённое значение:</strong>
+          <div>{value}</div>
+        </div>
+      )}
     </div>
   );
 }
+

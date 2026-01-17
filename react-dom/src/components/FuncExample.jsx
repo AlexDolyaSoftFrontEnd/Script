@@ -7,7 +7,11 @@ import React from "react";
 ----------------------------------------
 */
 
-function UserCard({ user }) {
+// Вариант с переменной props
+
+function UserCard(props) {
+  const user = props.user;
+
   return (
     <article className="card">
       <h3>{user.name}</h3>
@@ -15,6 +19,20 @@ function UserCard({ user }) {
     </article>
   );
 }
+
+// Более компактно, но всё ещё через переменную 
+
+function UserCard(props) {
+  const { user } = props;
+
+  return (
+    <article className="card">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </article>
+  );
+}
+
 
 /*
 ----------------------------------------
@@ -30,25 +48,6 @@ const UserCardShort = ({ name, email }) => (
   </article>
 );
 
-/*
-----------------------------------------
-Обработчик события как отдельная функция
-----------------------------------------
-*/
-
-function Counter() {
-  const [count, setCount] = React.useState(0);
-
-  const handleIncrement = () => {
-    setCount(prev => prev + 1);
-  };
-
-  return (
-    <button onClick={handleIncrement}>
-      Count: {count}
-    </button>
-  );
-}
 
 /*
 ----------------------------------------
@@ -58,12 +57,44 @@ Inline-функция в JSX
 */
 
 function InlineExample() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen((prev) => !prev);
+  };
 
   return (
-    <button onClick={() => setOpen(true)}>
-      {open ? "Opened" : "Open modal"}
-    </button>
+    <div style={{ padding: "20px" }}>
+      <button
+        onClick={handleToggle}
+        aria-expanded={open}
+        style={{
+          padding: "8px 12px",
+          cursor: "pointer",
+        }}
+      >
+        {open ? "Close modal" : "Open modal"}
+      </button>
+
+      {open && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          style={{
+            marginTop: "12px",
+            padding: "12px",
+            border: "1px solid #ccc",
+          }}
+        >
+          <strong>Modal content</strong>
+          <p>Здесь может быть любой UI или форма.</p>
+
+          <button onClick={() => setOpen(false)}>
+            Close
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
