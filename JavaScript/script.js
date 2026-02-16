@@ -5,7 +5,6 @@ console.group("=== 1. Локальные и Глобальные перемен�
 // ==========================================
 console.log("\n1. Глобальные переменные:");
 
-// Объявление в глобальной области (доступны отовсюду)
 var globalVar = "Я глобальная (var)";
 let globalLet = "Я глобальная (let)";
 const globalConst = "Я глобальная (const)";
@@ -161,32 +160,27 @@ console.groupEnd();
 
 console.group("=== 2. Сравнение типов данных ===");
 
-// 1. Строгое (===) vs Нестрогое (==) равенство
 console.log("\n1. Строгое и нестрогое равенство:");
 console.log("5 == '5'   :", 5 == '5');
 console.log("5 === '5'  :", 5 === '5');
 
-// 2. Сравнение разных типов (Number и String)
 console.log("\n2. Числа и Строки:");
 console.log("10 == '10' :", 10 == '10');
 console.log("10 === '10':", 10 === '10');
 console.log("'10' == 10 + '':", '10' == 10 + '');
 
-// 3. Булевы значения (Boolean)
 console.log("\n3. Логические значения:");
 console.log("true == 1  :", true == 1);
 console.log("true === 1 :", true === 1);
 console.log("false == 0 :", false == 0);
 console.log("'' == false:", '' == false);
 
-// 4. Null и Undefined
 console.log("\n4. Null и Undefined:");
 console.log("null == undefined :", null == undefined);
 console.log("null === undefined:", null === undefined);
 console.log("null == 0         :", null == 0);
 console.log("undefined == 0    :", undefined == 0);
 
-// 5. Объекты и Массивы (Сравнение по ссылке)
 console.log("\n5. Объекты и Массивы:");
 const obj1 = { a: 1 };
 const obj2 = { a: 1 };
@@ -200,7 +194,6 @@ console.log("Объекты равны по ссылке? obj1 == obj3     :", o
 console.log("Массивы равны по содержанию? [1,2] == [1,2]:", arr1 == arr2);
 console.log("Массив == Строка? [1,2] == '1,2'          :", arr1 == '1,2');
 
-// 6. Проверка типа через typeof
 console.log("\n6. Проверка типа (typeof):");
 console.log("typeof 123      :", typeof 123);
 console.log("typeof 'hello'  :", typeof 'hello');
@@ -212,10 +205,6 @@ console.log("typeof undefined:", typeof undefined);
 console.groupEnd();
 
 console.group("=== 3. Объекты ES5 и ES6 ===");
-
-/* ==========================================
-   1. ES5 (EcmaScript 5)
-   ========================================== */
 
 var userName = "Alex";
 var userAge = 25;
@@ -247,10 +236,6 @@ for (var key in sourceES5) {
         targetES5[key] = sourceES5[key];
     }
 }
-
-/* ==========================================
-   2. ES6 (EcmaScript 2015+)
-   ========================================== */
 
 const userName6 = "Alex";
 const userAge6 = 33;
@@ -284,10 +269,6 @@ const targetSpread = { ...sourceES6 };
 
 const { name: userNameDestruct, age: userAgeDestruct } = userES6;
 
-/* ==========================================
-   3. Улучшенные литералы объектов (ES6)
-   ========================================== */
-
 const productName = "Product";
 const price = 100;
 
@@ -303,10 +284,6 @@ const config = {
     [`type_${statusKey}`]: "premium"
 };
 
-/* ==========================================
-   4. Методы объектов (Функции внутри объектов)
-   ========================================== */
-
 const calculator = {
     add(a, b) {
         return a + b;
@@ -315,10 +292,6 @@ const calculator = {
         return a * b;
     },
 };
-
-/* ==========================================
-   5. Контекст this в объектах
-   ========================================== */
 
 const userContext = {
     firstName: "John",
@@ -329,10 +302,6 @@ const userContext = {
         return "No access to this";
     }
 };
-
-/* ==========================================
-   6. Классы (Синтаксический сахар над объектами)
-   ========================================== */
 
 class Animal {
     constructor(name) {
@@ -353,10 +322,6 @@ class Animal {
     }
 }
 
-/* ==========================================
-   7. Работа с объектами (Утилиты ES6)
-   ========================================== */
-
 const sourceUtils = { a: 1, b: 2 };
 const extra = { c: 3 };
 
@@ -369,10 +334,6 @@ const { a: alpha, b: beta } = sourceUtils;
 function printData({ name: propName, ...restProps }) {
     return restProps;
 }
-
-/* ==========================================
-   8. Фабричные функции (Альтернатива классам)
-   ========================================== */
 
 function createCircle(radius) {
     return {
@@ -388,20 +349,198 @@ const circle2 = createCircle(10);
 
 console.groupEnd();
 
-console.group("=== 4. Циклы и Итерации ===");
+console.group("=== 4. Функции в JavaScript ===");
 
-// ==========================================
-// 1. Классический цикл for
-// ==========================================
+console.log("\n1. Function Declaration:");
+
+function greetDeclaration(name) {
+    return "Hello, " + name;
+}
+
+console.log("Declaration:", greetDeclaration("Alice"));
+
+console.log("\n2. Function Expression:");
+
+const greetExpression = function(name) {
+    return "Hello, " + name;
+};
+
+console.log("Expression:", greetExpression("Bob"));
+
+console.log("\n3. Arrow Function:");
+
+const greetArrow = (name) => {
+    return "Hello, " + name;
+};
+
+console.log("Arrow:", greetArrow("Charlie"));
+
+const greetShort = (name) => "Hello, " + name;
+console.log("Arrow Short:", greetShort("David"));
+
+console.log("\n4. Параметры по умолчанию:");
+
+function greetDefault(name = "Guest") {
+    return "Hello, " + name;
+}
+
+console.log("С параметром:", greetDefault("Eve"));
+console.log("Без параметра:", greetDefault());
+
+console.log("\n5. Rest Parameters:");
+
+function sumAll(...numbers) {
+    return numbers.reduce((acc, num) => acc + num, 0);
+}
+
+console.log("sumAll(1, 2, 3):", sumAll(1, 2, 3));
+console.log("sumAll(1, 2, 3, 4, 5):", sumAll(1, 2, 3, 4, 5));
+
+console.log("\n6. IIFE:");
+
+(function() {
+    console.log("IIFE выполнена немедленно");
+})();
+
+((name) => {
+    console.log("IIFE с параметром:", name);
+})("Test");
+
+console.log("\n7. Callback Functions:");
+
+function processUser(name, callback) {
+    console.log("Обработка пользователя:", name);
+    callback(name);
+}
+
+processUser("Frank", function(userName) {
+    console.log("Callback: Пользователь", userName, "обработан");
+});
+
+console.log("\n8. Higher-Order Functions:");
+
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log("double(5):", double(5));
+console.log("triple(5):", triple(5));
+
+console.log("\n9. Функции с замыканием:");
+
+function createPrivateCounter() {
+    let privateCount = 0;
+    
+    return {
+        increment: function() {
+            privateCount++;
+            return privateCount;
+        },
+        decrement: function() {
+            privateCount--;
+            return privateCount;
+        },
+        getCount: function() {
+            return privateCount;
+        }
+    };
+}
+
+const privateCounter = createPrivateCounter();
+console.log("increment:", privateCounter.increment());
+console.log("increment:", privateCounter.increment());
+console.log("decrement:", privateCounter.decrement());
+console.log("getCount:", privateCounter.getCount());
+
+console.log("\n10. Рекурсивные функции:");
+
+function factorial(n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+
+console.log("factorial(5):", factorial(5));
+
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log("fibonacci(10):", fibonacci(10));
+
+console.log("\n11. Генераторы:");
+
+function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+}
+
+const gen = numberGenerator();
+console.log("gen.next():", gen.next().value);
+console.log("gen.next():", gen.next().value);
+console.log("gen.next():", gen.next().value);
+
+function* idGenerator() {
+    let id = 1;
+    while (true) {
+        yield id++;
+    }
+}
+
+const idGen = idGenerator();
+console.log("idGen.next():", idGen.next().value);
+console.log("idGen.next():", idGen.next().value);
+console.log("idGen.next():", idGen.next().value);
+
+console.log("\n12. Методы функций (call, apply, bind):");
+
+const person1 = { firstName: "John", lastName: "Doe" };
+const person2 = { firstName: "Jane", lastName: "Smith" };
+
+function greet(greeting, punctuation) {
+    return greeting + ", " + this.firstName + " " + this.lastName + punctuation;
+}
+
+console.log("call:", greet.call(person1, "Hello", "!"));
+console.log("apply:", greet.apply(person2, ["Hi", "."]));
+
+const boundGreet = greet.bind(person1, "Good morning");
+console.log("bind:", boundGreet("!"));
+
+console.log("\n13. Сравнение типов функций:");
+
+console.log("typeof function(){}:", typeof function(){});
+console.log("typeof () => {}:", typeof (() => {}));
+console.log("typeof Function:", typeof Function);
+
+console.log("\n14. Асинхронные функции:");
+
+async function asyncGreet(name) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return "Hello, " + name;
+}
+
+asyncGreet("AsyncUser").then(result => {
+    console.log("asyncGreet result:", result);
+});
+
+console.groupEnd();
+
+console.group("=== 5. Циклы и Итерации ===");
+
 console.log("\n1. Классический цикл for:");
 
 for (let i = 0; i < 5; i++) {
     console.log("for iteration:", i);
 }
 
-// ==========================================
-// 2. Цикл while
-// ==========================================
 console.log("\n2. Цикл while:");
 
 let whileCount = 0;
@@ -410,9 +549,6 @@ while (whileCount < 3) {
     whileCount++;
 }
 
-// ==========================================
-// 3. Цикл do...while
-// ==========================================
 console.log("\n3. Цикл do...while:");
 
 let doCount = 0;
@@ -426,9 +562,6 @@ do {
     console.log("do...while выполнится один раз");
 } while (doOnce < 3);
 
-// ==========================================
-// 4. Цикл for...in (для объектов)
-// ==========================================
 console.log("\n4. Цикл for...in (объекты):");
 
 const userForIn = {
@@ -446,9 +579,6 @@ for (let index in arrForIn) {
     console.log("Индекс:", index, "Значение:", arrForIn[index]);
 }
 
-// ==========================================
-// 5. Цикл for...of (для итерируемых объектов)
-// ==========================================
 console.log("\n5. Цикл for...of (массивы, строки):");
 
 const arrForOf = [10, 20, 30];
@@ -466,9 +596,6 @@ for (let [key, value] of Object.entries(userForOf)) {
     console.log("Ключ:", key, "Значение:", value);
 }
 
-// ==========================================
-// 6. Метод forEach для массивов
-// ==========================================
 console.log("\n6. Метод forEach:");
 
 const numbers = [1, 2, 3, 4, 5];
@@ -480,9 +607,6 @@ numbers.forEach((num) => {
     console.log("forEach arrow:", num * 2);
 });
 
-// ==========================================
-// 7. break и continue
-// ==========================================
 console.log("\n7. break и continue:");
 
 for (let i = 0; i < 10; i++) {
@@ -501,9 +625,6 @@ for (let i = 0; i < 5; i++) {
     console.log("continue test:", i);
 }
 
-// ==========================================
-// 8. Методы массивов (map, filter, reduce)
-// ==========================================
 console.log("\n8. Методы массивов (map, filter, reduce):");
 
 const doubled = numbers.map(num => num * 2);
@@ -521,9 +642,6 @@ const result = numbers
     .reduce((acc, num) => acc + num, 0);
 console.log("Цепочка (filter > 2, map *10, reduce sum):", result);
 
-// ==========================================
-// 9. Вложенные циклы
-// ==========================================
 console.log("\n9. Вложенные циклы:");
 
 for (let i = 1; i <= 3; i++) {
@@ -534,9 +652,6 @@ for (let i = 1; i <= 3; i++) {
     console.log(row);
 }
 
-// ==========================================
-// 10. Метки для циклов (Labels)
-// ==========================================
 console.log("\n10. Метки для циклов:");
 
 outerLoop: for (let i = 0; i < 3; i++) {
@@ -551,9 +666,8 @@ outerLoop: for (let i = 0; i < 3; i++) {
 
 console.groupEnd();
 
-console.group("=== 5. Работа с Promise и Async/Await ===");
+console.group("=== 6. Работа с Promise и Async/Await ===");
 
-// 1. Создание простого промиса
 console.log("\n1. Создание Promise:");
 const promiseSuccess = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -567,7 +681,6 @@ const promiseError = new Promise((resolve, reject) => {
     }, 1000);
 });
 
-// 2. Использование .then(), .catch(), .finally()
 console.log("\n2. Обработка состояний (then/catch/finally):");
 promiseSuccess
     .then((result) => {
@@ -591,7 +704,6 @@ promiseError
         console.log("Завершено (finally) для ошибки");
     });
 
-// 3. Цепочка промисов (Chaining)
 console.log("\n3. Цепочка промисов (Chaining):");
 const chainPromise = new Promise((resolve) => {
     setTimeout(() => resolve(1), 500);
@@ -610,7 +722,6 @@ chainPromise
         console.log("Шаг 3:", value);
     });
 
-// 4. Параллельное выполнение (Promise.all)
 console.log("\n4. Promise.all:");
 
 const p1 = Promise.resolve(10);
@@ -625,7 +736,6 @@ Promise.all([p1, p2, p3])
         console.log("Один из промисов упал:", err);
     });
 
-// 5. Первый завершившийся (Promise.race)
 console.log("\n5. Promise.race (Ждем первого):");
 const fastPromise = new Promise((resolve) => setTimeout(() => resolve("Быстрый"), 500));
 const slowPromise = new Promise((resolve) => setTimeout(() => resolve("Медленный"), 2000));
@@ -635,7 +745,6 @@ Promise.race([fastPromise, slowPromise])
         console.log("Первый завершил:", value);
     });
 
-// 6. Async/Await
 console.log("\n6. Async/Await:");
 async function fetchData() {
     console.log("Начало загрузки...");
@@ -647,7 +756,6 @@ async function fetchData() {
 
 fetchData();
 
-// 7. Обработка ошибок в Async/Await (try/catch)
 console.log("\n7. Обработка ошибок в Async/Await:");
 async function fetchWithError() {
     try {
@@ -662,7 +770,6 @@ async function fetchWithError() {
 
 fetchWithError();
 
-// 8. Promise.allSettled (Ждем все, независимо от успеха)
 console.log("\n8. Promise.allSettled (Игнорируем ошибки):");
 const mixedPromises = [
     Promise.resolve("Успех"),
@@ -676,3 +783,494 @@ Promise.allSettled(mixedPromises)
     });
 
 console.groupEnd();
+
+console.group("=== 7. Switch Statement (Оператор выбора) ===");
+
+console.log("\n1. Базовый switch:");
+
+const day = 3;
+let dayName;
+
+switch (day) {
+    case 1:
+        dayName = "Понедельник";
+        break;
+    case 2:
+        dayName = "Вторник";
+        break;
+    case 3:
+        dayName = "Среда";
+        break;
+    case 4:
+        dayName = "Четверг";
+        break;
+    case 5:
+        dayName = "Пятница";
+        break;
+    case 6:
+        dayName = "Суббота";
+        break;
+    case 7:
+        dayName = "Воскресенье";
+        break;
+    default:
+        dayName = "Неверный день";
+}
+
+console.log("День:", dayName);
+
+console.log("\n2. Switch без break (fallthrough):");
+
+const fruit = "apple";
+let price = 0;
+
+switch (fruit) {
+    case "apple":
+    case "pear":
+        price = 100;
+        console.log("Цена для", fruit, ":", price);
+        break;
+    case "orange":
+    case "banana":
+        price = 80;
+        console.log("Цена для", fruit, ":", price);
+        break;
+    default:
+        price = 50;
+        console.log("Цена для", fruit, ":", price);
+}
+
+console.log("\n3. Switch с выражениями:");
+
+const score = 85;
+let grade;
+
+switch (true) {
+    case (score >= 90):
+        grade = "A";
+        break;
+    case (score >= 80):
+        grade = "B";
+        break;
+    case (score >= 70):
+        grade = "C";
+        break;
+    case (score >= 60):
+        grade = "D";
+        break;
+    default:
+        grade = "F";
+}
+
+console.log("Оценка:", score, "Балл:", grade);
+
+console.log("\n4. Switch со строками:");
+
+const command = "start";
+
+switch (command) {
+    case "start":
+        console.log("Запуск системы...");
+        break;
+    case "stop":
+        console.log("Остановка системы...");
+        break;
+    case "restart":
+        console.log("Перезагрузка системы...");
+        break;
+    default:
+        console.log("Неизвестная команда");
+}
+
+console.log("\n5. Switch с числами:");
+
+const month = 6;
+let season;
+
+switch (month) {
+    case 12:
+    case 1:
+    case 2:
+        season = "Зима";
+        break;
+    case 3:
+    case 4:
+    case 5:
+        season = "Весна";
+        break;
+    case 6:
+    case 7:
+    case 8:
+        season = "Лето";
+        break;
+    case 9:
+    case 10:
+    case 11:
+        season = "Осень";
+        break;
+    default:
+        season = "Неизвестно";
+}
+
+console.log("Месяц:", month, "Сезон:", season);
+
+console.log("\n6. Switch vs if-else:");
+
+const status = "active";
+
+switch (status) {
+    case "active":
+        console.log("Switch: Активен");
+        break;
+    case "inactive":
+        console.log("Switch: Неактивен");
+        break;
+    case "pending":
+        console.log("Switch: Ожидание");
+        break;
+    default:
+        console.log("Switch: Неизвестный статус");
+}
+
+if (status === "active") {
+    console.log("If-else: Активен");
+} else if (status === "inactive") {
+    console.log("If-else: Неактивен");
+} else if (status === "pending") {
+    console.log("If-else: Ожидание");
+} else {
+    console.log("If-else: Неизвестный статус");
+}
+
+console.log("\n7. Switch с возвращением значения:");
+
+function getLanguageCode(lang) {
+    switch (lang) {
+        case "Russian":
+            return "ru";
+        case "English":
+            return "en";
+        case "Spanish":
+            return "es";
+        case "French":
+            return "fr";
+        default:
+            return "unknown";
+    }
+}
+
+console.log("Russian:", getLanguageCode("Russian"));
+console.log("English:", getLanguageCode("English"));
+console.log("German:", getLanguageCode("German"));
+
+console.log("\n8. Switch с объектами (альтернатива):");
+
+const actions = {
+    create: () => "Создание",
+    read: () => "Чтение",
+    update: () => "Обновление",
+    delete: () => "Удаление"
+};
+
+const action = "update";
+const switchResult = actions[action] ? actions[action]() : "Неизвестное действие";
+console.log("Действие:", action, "Результат:", switchResult);
+
+console.groupEnd();
+
+console.group("=== 8. Работа с DOM (Document Object Model) ===");
+
+// ==========================================
+// 1. Поиск элементов (Selectors)
+// ==========================================
+
+// Поиск по ID
+const elementById = document.getElementById("myId");
+
+// Поиск по классу (возвращает HTMLCollection)
+const elementsByClass = document.getElementsByClassName("myClass");
+
+// Поиск по тегу (возвращает HTMLCollection)
+const elementsByTag = document.getElementsByTagName("div");
+
+// Поиск по CSS селектору (возвращает первый элемент)
+const elementByQuery = document.querySelector(".myClass");
+
+// Поиск по CSS селектору (возвращает NodeList)
+const elementsByQueryAll = document.querySelectorAll("div.item");
+
+// ==========================================
+// 2. Создание элементов
+// ==========================================
+
+// Создание нового элемента
+const newDiv = document.createElement("div");
+
+// Создание текстового узла
+const newText = document.createTextNode("Hello World");
+
+// Добавление дочернего элемента
+newDiv.appendChild(newText);
+
+// Добавление элемента в DOM
+document.body.appendChild(newDiv);
+
+// ==========================================
+// 3. Изменение содержимого
+// ==========================================
+
+const contentElement = document.querySelector(".content");
+
+// Установка текстового содержимого
+contentElement.textContent = "Текстовое содержимое";
+
+// Установка HTML содержимого
+contentElement.innerHTML = "<strong>HTML содержимое</strong>";
+
+// Установка видимого текста
+contentElement.innerText = "Видимый текст";
+
+// ==========================================
+// 4. Работа с атрибутами
+// ==========================================
+
+const linkElement = document.querySelector("a");
+
+// Установка атрибута
+linkElement.setAttribute("href", "https://example.com");
+linkElement.setAttribute("target", "_blank");
+
+// Получение атрибута
+const hrefValue = linkElement.getAttribute("href");
+
+// Удаление атрибута
+linkElement.removeAttribute("target");
+
+// Проверка наличия атрибута
+const hasHref = linkElement.hasAttribute("href");
+
+// ==========================================
+// 5. Работа с классами
+// ==========================================
+
+const classElement = document.querySelector(".element");
+
+// Добавление класса
+classElement.classList.add("active");
+
+// Удаление класса
+classElement.classList.remove("inactive");
+
+// Переключение класса
+classElement.classList.toggle("hidden");
+
+// Проверка наличия класса
+const hasActive = classElement.classList.contains("active");
+
+// ==========================================
+// 6. Стили элементов
+// ==========================================
+
+const styleElement = document.querySelector(".styled");
+
+// Изменение отдельных стилей
+styleElement.style.color = "red";
+styleElement.style.backgroundColor = "blue";
+styleElement.style.fontSize = "16px";
+styleElement.style.display = "none";
+
+// Установка нескольких стилей
+styleElement.style.cssText = "color: red; font-size: 16px; padding: 10px;";
+
+// ==========================================
+// 7. Навигация по DOM
+// ==========================================
+
+const navElement = document.querySelector(".nav");
+
+// Родительский элемент
+const parent = navElement.parentNode;
+
+// Дочерние элементы
+const children = navElement.children;
+
+// Первый дочерний узел
+const firstChild = navElement.firstChild;
+
+// Последний дочерний узел
+const lastChild = navElement.lastChild;
+
+// Следующий узел
+const nextSibling = navElement.nextSibling;
+
+// Предыдущий узел
+const previousSibling = navElement.previousSibling;
+
+// ==========================================
+// 8. Удаление элементов
+// ==========================================
+
+const removeElement = document.querySelector(".toRemove");
+
+// Удаление элемента
+removeElement.remove();
+
+// Удаление дочернего элемента
+const parentElement = document.querySelector(".parent");
+const childElement = document.querySelector(".child");
+parentElement.removeChild(childElement);
+
+// ==========================================
+// 9. События (Events)
+// ==========================================
+
+const buttonElement = document.querySelector("#myButton");
+
+// Добавление обработчика событий
+buttonElement.addEventListener("click", function(event) {
+    // Обработка клика
+});
+
+// Удаление обработчика событий
+function handleClick(event) {
+    // Обработка
+}
+buttonElement.addEventListener("click", handleClick);
+buttonElement.removeEventListener("click", handleClick);
+
+// Прямой обработчик клика
+buttonElement.onclick = function() {
+    // Обработка
+};
+
+// ==========================================
+// 10. Обработчик событий с параметрами
+// ==========================================
+
+const eventButton = document.querySelector("#eventButton");
+
+eventButton.addEventListener("click", function(event) {
+    // Элемент, вызвавший событие
+    const target = event.target;
+    
+    // Отмена действия по умолчанию
+    event.preventDefault();
+    
+    // Остановка всплытия события
+    event.stopPropagation();
+});
+
+// ==========================================
+// 11. Делегирование событий
+// ==========================================
+
+const listElement = document.querySelector("#list");
+
+listElement.addEventListener("click", function(event) {
+    if (event.target.tagName === "LI") {
+        // Обработка клика по элементу списка
+        const listItemText = event.target.textContent;
+    }
+});
+
+// ==========================================
+// 12. Формы и ввод данных
+// ==========================================
+
+const formElement = document.querySelector("#myForm");
+
+formElement.addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    // Получение данных формы
+    const formData = new FormData(formElement);
+    const username = formData.get("username");
+    const email = formData.get("email");
+    
+    // Получение значения поля ввода
+    const inputElement = document.querySelector("#inputField");
+    const inputValue = inputElement.value;
+    
+    // Получение состояния чекбокса
+    const checkboxElement = document.querySelector("#checkbox");
+    const isChecked = checkboxElement.checked;
+});
+
+// ==========================================
+// 13. Размеры и позиция элементов
+// ==========================================
+
+const measureElement = document.querySelector(".measure");
+
+// Размеры с border и padding
+const offsetWidth = measureElement.offsetWidth;
+const offsetHeight = measureElement.offsetHeight;
+
+// Размеры с padding, без border
+const clientWidth = measureElement.clientWidth;
+const clientHeight = measureElement.clientHeight;
+
+// Позиция относительно viewport
+const rect = measureElement.getBoundingClientRect();
+const top = rect.top;
+const left = rect.left;
+const width = rect.width;
+const height = rect.height;
+
+// ==========================================
+// 14. Анимация через DOM
+// ==========================================
+
+const animateElement = document.querySelector(".animate");
+let position = 0;
+
+// Анимация с requestAnimationFrame
+function animate() {
+    position += 1;
+    animateElement.style.transform = "translateX(" + position + "px)";
+    
+    if (position < 100) {
+        requestAnimationFrame(animate);
+    }
+}
+
+// Запуск анимации
+requestAnimationFrame(animate);
+
+// ==========================================
+// 15. Работа с localStorage
+// ==========================================
+
+// Сохранение данных
+localStorage.setItem("key", "value");
+localStorage.setItem("user", JSON.stringify({ name: "John", age: 25 }));
+
+// Получение данных
+const storedValue = localStorage.getItem("key");
+const storedUser = JSON.parse(localStorage.getItem("user"));
+
+// Удаление данных
+localStorage.removeItem("key");
+
+// Очистка всех данных
+localStorage.clear();
+
+// ==========================================
+// 16. Манипуляция с классами через CSS
+// ==========================================
+
+const toggleElement = document.querySelector(".toggle");
+
+// Добавление нескольких классов
+toggleElement.classList.add("class1", "class2", "class3");
+
+// Удаление нескольких классов
+toggleElement.classList.remove("class1", "class2");
+
+// Переключение с условием
+toggleElement.classList.toggle("active", true);
+toggleElement.classList.toggle("active", false);
+
+console.groupEnd();
+
+console.log("\n=== Все примеры JavaScript завершены ===");
