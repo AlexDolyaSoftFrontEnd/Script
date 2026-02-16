@@ -5,8 +5,8 @@ console.group("=== 1. Локальные и Глобальные перемен�
 // ==========================================
 console.log("\n1. Глобальные переменные:");
 
-var globalVar = "Я глобальная (var)";
-let globalLet = "Я глобальная (let)";
+var globalVar = "Глобальная (var)";
+let globalLet = "Глобальная (let)";
 const globalConst = "Я глобальная (const)";
 
 function accessGlobal() {
@@ -932,16 +932,6 @@ switch (status) {
         console.log("Switch: Неизвестный статус");
 }
 
-if (status === "active") {
-    console.log("If-else: Активен");
-} else if (status === "inactive") {
-    console.log("If-else: Неактивен");
-} else if (status === "pending") {
-    console.log("If-else: Ожидание");
-} else {
-    console.log("If-else: Неизвестный статус");
-}
-
 console.log("\n7. Switch с возвращением значения:");
 
 function getLanguageCode(lang) {
@@ -959,9 +949,7 @@ function getLanguageCode(lang) {
     }
 }
 
-console.log("Russian:", getLanguageCode("Russian"));
 console.log("English:", getLanguageCode("English"));
-console.log("German:", getLanguageCode("German"));
 
 console.log("\n8. Switch с объектами (альтернатива):");
 
@@ -1109,5 +1097,3 @@ toggleElement.classList.toggle("active", true);
 toggleElement.classList.toggle("active", false);
 
 console.groupEnd();
-
-console.log("\n=== Все примеры JavaScript завершены ===");
