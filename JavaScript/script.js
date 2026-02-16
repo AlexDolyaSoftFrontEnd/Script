@@ -270,11 +270,11 @@ const targetSpread = { ...sourceES6 };
 const { name: userNameDestruct, age: userAgeDestruct } = userES6;
 
 const productName = "Product";
-const price = 100;
+const productPrice = 100;
 
 const item = {
     productName,
-    price,
+    price: productPrice,
     category: "Electronics"
 };
 
@@ -822,22 +822,22 @@ console.log("День:", dayName);
 console.log("\n2. Switch без break (fallthrough):");
 
 const fruit = "apple";
-let price = 0;
+let fruitPrice = 0;
 
 switch (fruit) {
     case "apple":
     case "pear":
-        price = 100;
-        console.log("Цена для", fruit, ":", price);
+        fruitPrice = 100;
+        console.log("Цена для", fruit, ":", fruitPrice);
         break;
     case "orange":
     case "banana":
-        price = 80;
-        console.log("Цена для", fruit, ":", price);
+        fruitPrice = 80;
+        console.log("Цена для", fruit, ":", fruitPrice);
         break;
     default:
-        price = 50;
-        console.log("Цена для", fruit, ":", price);
+        fruitPrice = 50;
+        console.log("Цена для", fruit, ":", fruitPrice);
 }
 
 console.log("\n3. Switch с выражениями:");
@@ -980,294 +980,131 @@ console.groupEnd();
 
 console.group("=== 8. Работа с DOM (Document Object Model) ===");
 
-// ==========================================
-// 1. Поиск элементов (Selectors)
-// ==========================================
-
-// Поиск по ID
 const elementById = document.getElementById("myId");
-
-// Поиск по классу (возвращает HTMLCollection)
 const elementsByClass = document.getElementsByClassName("myClass");
-
-// Поиск по тегу (возвращает HTMLCollection)
 const elementsByTag = document.getElementsByTagName("div");
-
-// Поиск по CSS селектору (возвращает первый элемент)
 const elementByQuery = document.querySelector(".myClass");
-
-// Поиск по CSS селектору (возвращает NodeList)
 const elementsByQueryAll = document.querySelectorAll("div.item");
 
-// ==========================================
-// 2. Создание элементов
-// ==========================================
-
-// Создание нового элемента
 const newDiv = document.createElement("div");
-
-// Создание текстового узла
 const newText = document.createTextNode("Hello World");
-
-// Добавление дочернего элемента
 newDiv.appendChild(newText);
-
-// Добавление элемента в DOM
 document.body.appendChild(newDiv);
 
-// ==========================================
-// 3. Изменение содержимого
-// ==========================================
-
 const contentElement = document.querySelector(".content");
-
-// Установка текстового содержимого
 contentElement.textContent = "Текстовое содержимое";
-
-// Установка HTML содержимого
 contentElement.innerHTML = "<strong>HTML содержимое</strong>";
-
-// Установка видимого текста
 contentElement.innerText = "Видимый текст";
 
-// ==========================================
-// 4. Работа с атрибутами
-// ==========================================
-
 const linkElement = document.querySelector("a");
-
-// Установка атрибута
 linkElement.setAttribute("href", "https://example.com");
 linkElement.setAttribute("target", "_blank");
-
-// Получение атрибута
 const hrefValue = linkElement.getAttribute("href");
-
-// Удаление атрибута
 linkElement.removeAttribute("target");
-
-// Проверка наличия атрибута
 const hasHref = linkElement.hasAttribute("href");
 
-// ==========================================
-// 5. Работа с классами
-// ==========================================
-
 const classElement = document.querySelector(".element");
-
-// Добавление класса
 classElement.classList.add("active");
-
-// Удаление класса
 classElement.classList.remove("inactive");
-
-// Переключение класса
 classElement.classList.toggle("hidden");
-
-// Проверка наличия класса
 const hasActive = classElement.classList.contains("active");
 
-// ==========================================
-// 6. Стили элементов
-// ==========================================
-
 const styleElement = document.querySelector(".styled");
-
-// Изменение отдельных стилей
 styleElement.style.color = "red";
 styleElement.style.backgroundColor = "blue";
 styleElement.style.fontSize = "16px";
 styleElement.style.display = "none";
-
-// Установка нескольких стилей
 styleElement.style.cssText = "color: red; font-size: 16px; padding: 10px;";
 
-// ==========================================
-// 7. Навигация по DOM
-// ==========================================
-
 const navElement = document.querySelector(".nav");
-
-// Родительский элемент
 const parent = navElement.parentNode;
-
-// Дочерние элементы
 const children = navElement.children;
-
-// Первый дочерний узел
 const firstChild = navElement.firstChild;
-
-// Последний дочерний узел
 const lastChild = navElement.lastChild;
-
-// Следующий узел
 const nextSibling = navElement.nextSibling;
-
-// Предыдущий узел
 const previousSibling = navElement.previousSibling;
 
-// ==========================================
-// 8. Удаление элементов
-// ==========================================
-
 const removeElement = document.querySelector(".toRemove");
-
-// Удаление элемента
 removeElement.remove();
 
-// Удаление дочернего элемента
 const parentElement = document.querySelector(".parent");
 const childElement = document.querySelector(".child");
 parentElement.removeChild(childElement);
 
-// ==========================================
-// 9. События (Events)
-// ==========================================
-
 const buttonElement = document.querySelector("#myButton");
-
-// Добавление обработчика событий
 buttonElement.addEventListener("click", function(event) {
     // Обработка клика
 });
 
-// Удаление обработчика событий
 function handleClick(event) {
     // Обработка
 }
 buttonElement.addEventListener("click", handleClick);
 buttonElement.removeEventListener("click", handleClick);
-
-// Прямой обработчик клика
 buttonElement.onclick = function() {
     // Обработка
 };
 
-// ==========================================
-// 10. Обработчик событий с параметрами
-// ==========================================
-
 const eventButton = document.querySelector("#eventButton");
-
 eventButton.addEventListener("click", function(event) {
-    // Элемент, вызвавший событие
     const target = event.target;
-    
-    // Отмена действия по умолчанию
     event.preventDefault();
-    
-    // Остановка всплытия события
     event.stopPropagation();
 });
 
-// ==========================================
-// 11. Делегирование событий
-// ==========================================
-
 const listElement = document.querySelector("#list");
-
 listElement.addEventListener("click", function(event) {
     if (event.target.tagName === "LI") {
-        // Обработка клика по элементу списка
         const listItemText = event.target.textContent;
     }
 });
 
-// ==========================================
-// 12. Формы и ввод данных
-// ==========================================
-
 const formElement = document.querySelector("#myForm");
-
 formElement.addEventListener("submit", function(event) {
     event.preventDefault();
-    
-    // Получение данных формы
     const formData = new FormData(formElement);
     const username = formData.get("username");
     const email = formData.get("email");
-    
-    // Получение значения поля ввода
     const inputElement = document.querySelector("#inputField");
     const inputValue = inputElement.value;
-    
-    // Получение состояния чекбокса
     const checkboxElement = document.querySelector("#checkbox");
     const isChecked = checkboxElement.checked;
 });
 
-// ==========================================
-// 13. Размеры и позиция элементов
-// ==========================================
-
 const measureElement = document.querySelector(".measure");
-
-// Размеры с border и padding
 const offsetWidth = measureElement.offsetWidth;
 const offsetHeight = measureElement.offsetHeight;
-
-// Размеры с padding, без border
 const clientWidth = measureElement.clientWidth;
 const clientHeight = measureElement.clientHeight;
-
-// Позиция относительно viewport
 const rect = measureElement.getBoundingClientRect();
 const top = rect.top;
 const left = rect.left;
 const width = rect.width;
 const height = rect.height;
 
-// ==========================================
-// 14. Анимация через DOM
-// ==========================================
-
 const animateElement = document.querySelector(".animate");
 let position = 0;
 
-// Анимация с requestAnimationFrame
 function animate() {
     position += 1;
     animateElement.style.transform = "translateX(" + position + "px)";
-    
     if (position < 100) {
         requestAnimationFrame(animate);
     }
 }
 
-// Запуск анимации
 requestAnimationFrame(animate);
 
-// ==========================================
-// 15. Работа с localStorage
-// ==========================================
-
-// Сохранение данных
 localStorage.setItem("key", "value");
 localStorage.setItem("user", JSON.stringify({ name: "John", age: 25 }));
-
-// Получение данных
 const storedValue = localStorage.getItem("key");
 const storedUser = JSON.parse(localStorage.getItem("user"));
-
-// Удаление данных
 localStorage.removeItem("key");
-
-// Очистка всех данных
 localStorage.clear();
 
-// ==========================================
-// 16. Манипуляция с классами через CSS
-// ==========================================
-
 const toggleElement = document.querySelector(".toggle");
-
-// Добавление нескольких классов
 toggleElement.classList.add("class1", "class2", "class3");
-
-// Удаление нескольких классов
 toggleElement.classList.remove("class1", "class2");
-
-// Переключение с условием
 toggleElement.classList.toggle("active", true);
 toggleElement.classList.toggle("active", false);
 
