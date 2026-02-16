@@ -1,166 +1,51 @@
-// ===============================
-// Selectors
-// ===============================
-// Коммит: добавлены универсальные селекторы для ES5
+console.group("=== Сравнение типов данных ===");
 
-var title = document.getElementById('title');
+// 1. Строгое (===) vs Нестрогое (==) равенство
+console.log("5 == '5'   :", 5 == '5');    // true (строка '5' превращается в число 5)
+console.log("5 === '5'  :", 5 === '5');   // false (разные типы: number и string)
 
-function qs(selector) {
-  return document.querySelector(selector);
-}
+// 2. Сравнение разных типов (Number и String)
+console.log("\n2. Числа и Строки:");
+console.log("10 == '10' :", 10 == '10');  // true
+console.log("10 === '10':", 10 === '10'); // false
+console.log("'10' == 10 + '':", '10' == 10 + ''); // true (число превращается в строку)
 
-function qsa(selector) {
-  return document.querySelectorAll(selector);
-}
+// 3. Булевы значения (Boolean)
+console.log("\n3. Логические значения:");
+console.log("true == 1  :", true == 1);   // true (true превращается в 1)
+console.log("true === 1 :", true === 1);  // false (boolean и number)
+console.log("false == 0 :", false == 0);  // true (false превращается в 0)
+console.log("'' == false:", '' == false); // true (пустая строка считается ложью и равна 0)
 
-// ===============================
-// Text / HTML
-// ===============================
-// Коммит: управление textContent и innerHTML
+// 4. Null и Undefined
+console.log("\n4. Null и Undefined:");
+console.log("null == undefined :", null == undefined);   // true 
+console.log("null === undefined:", null === undefined);  // false
+console.log("null == 0         :", null == 0);           // false
+console.log("undefined == 0    :", undefined == 0);      // false
 
-qs('#textBtn').addEventListener('click', function () {
-  qs('#text').textContent = 'Текст изменён через JavaScript (ES5)';
-});
+// 5. Объекты и Массивы (Сравнение по ссылке)
+console.log("\n5. Объекты и Массивы:");
+const obj1 = { a: 1 };
+const obj2 = { a: 1 };
+const obj3 = obj1; 
 
-qs('#htmlBtn').addEventListener('click', function () {
-  qs('#text').innerHTML = '<strong>HTML</strong> изменён';
-});
+const arr1 = [1, 2];
+const arr2 = [1, 2];
 
-// ===============================
-// Classes
-// ===============================
-// Коммит: переключение классов через classList
+console.log("Объекты равны по содержанию? {a:1} == {a:1}:", obj1 == obj2); // false
+console.log("Объекты равны по ссылке? obj1 == obj3     :", obj1 == obj3);  // true
 
-qs('#classBtn').addEventListener('click', function () {
-  qs('#classBox').classList.toggle('active');
-});
+console.log("Массивы равны по содержанию? [1,2] == [1,2]:", arr1 == arr2); // false
+console.log("Массив == Строка? [1,2] == '1,2'          :", arr1 == '1,2'); // true (массив превращается в строку)
 
-// ===============================
-// Attributes
-// ===============================
-// Коммит: работа с HTML-атрибутами
+// 6. Проверка типа через typeof
+console.log("\n6. Проверка типа (typeof):");
+console.log("typeof 123      :", typeof 123);       // "number"
+console.log("typeof 'hello'  :", typeof 'hello');   // "string"
+console.log("typeof true     :", typeof true);      // "boolean"
+console.log("typeof {}       :", typeof {});        // "object"
+console.log("typeof null     :", typeof null);      // "object" (исторический баг JS!)
+console.log("typeof undefined:", typeof undefined); // "undefined"
 
-qs('#attrBtn').addEventListener('click', function () {
-  qs('#img').setAttribute(
-    'src',
-    'https://via.placeholder.com/100/ff0000'
-  );
-});
-
-// ===============================
-// Dataset
-// ===============================
-// Коммит: чтение data-атрибутов
-
-var dataBox = qs('#dataBox');
-
-console.log('ID:', dataBox.dataset.id);
-console.log('Status:', dataBox.dataset.status);
-
-// ===============================
-// Create / Remove
-// ===============================
-// Коммит: динамическое создание и удаление DOM-узлов
-
-var list = qs('#list');
-var counter = 1;
-
-qs('#addItem').onclick = function () {
-  var li = document.createElement('li');
-  li.className = 'item';
-  li.appendChild(document.createTextNode('Item ' + counter));
-  counter += 1;
-
-  list.appendChild(li);
-};
-
-qs('#clearList').onclick = function () {
-  list.innerHTML = '';
-  counter = 1;
-};
-
-// ===============================
-// Event Delegation
-// ===============================
-// Коммит: делегирование событий
-
-qs('#delegation').addEventListener('click', function (e) {
-  var target = e.target;
-
-  if (target && target.classList.contains('item')) {
-    alert('Clicked: ' + target.textContent);
-  }
-});
-
-// ===============================
-// Form + FormData
-// ===============================
-// Коммит: обработка формы без перезагрузки страницы
-
-qs('#form').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  var formData = new FormData(e.target);
-  console.log('Email:', formData.get('email'));
-
-  e.target.reset();
-});
-
-// ===============================
-// Inputs
-// ===============================
-// Коммит: чтение значений input и checkbox
-
-qs('#inputBtn').onclick = function () {
-  console.log('Input value:', qs('#input').value);
-  console.log('Checkbox checked:', qs('#checkbox').checked);
-};
-
-// ===============================
-// Scroll
-// ===============================
-// Коммит: программный скролл страницы
-
-qs('#scrollBtn').onclick = function () {
-  window.scrollBy({
-    top: 200,
-    behavior: 'smooth'
-  });
-};
-
-// ===============================
-// Sizes / Position
-// ===============================
-// Коммит: измерение размеров и позиции элемента
-
-console.log('Title width:', title.offsetWidth);
-console.log('Title rect:', title.getBoundingClientRect());
-
-// ===============================
-// Style manipulation
-// ===============================
-// Коммит: управление inline-стилями
-
-qs('#styleBtn').onclick = function () {
-  var box = qs('#styleBox');
-  box.style.backgroundColor = '#ffeeba';
-  box.style.borderColor = '#f0ad4e';
-};
-
-// ===============================
-// Show / Hide
-// ===============================
-// Коммит: управление видимостью элементов
-
-qs('#toggleBtn').onclick = function () {
-  qs('#toggleBox').classList.toggle('hidden');
-};
-
-// ===============================
-// DOM ready
-// ===============================
-// Коммит: безопасная инициализация после загрузки DOM
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM полностью загружен');
-});
+console.groupEnd();
