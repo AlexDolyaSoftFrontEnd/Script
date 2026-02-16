@@ -50,3 +50,227 @@ console.log("typeof null     :", typeof null);      // "object" (историч�
 console.log("typeof undefined:", typeof undefined); // "undefined"
 
 console.groupEnd();
+
+/* ==========================================
+   2. ES5 (EcmaScript 5)
+   ========================================== */
+
+// 1. Объявление переменных через var
+var userName = "Alex";
+var userAge = 25;
+
+// 2. Создание объекта 
+var userES5 = {
+    name: userName,
+    age: userAge,
+    // Метод через function
+    getInfo: function() {
+        return this.name + " is " + this.age;
+    }
+};
+
+// 3. Динамическое добавление свойства (через скобки)
+var dynamicKey = "status";
+var objES5 = {};
+objES5[dynamicKey] = "active";
+
+// 4. Конструктор объектов (функция-конструктор)
+function PersonES5(name) {
+    this.name = name;
+    this.sayHello = function() {
+        return "Hello, " + this.name;
+    };
+}
+var personInstanceES5 = new PersonES5("John");
+
+// 5. Копирование свойств 
+var targetES5 = {};
+var sourceES5 = { a: 1 };
+for (var key in sourceES5) {
+    if (sourceES5.hasOwnProperty(key)) {
+        targetES5[key] = sourceES5[key];
+    }
+}
+
+
+/* ==========================================
+   3. ES6 (EcmaScript 2015+)
+   ========================================== */
+
+// 1. Объявление переменных через const/let
+const userName6 = "Alex";
+const userAge6 = 33;
+
+// 2. Создание объекта 
+const userES6 = {
+    name: userName6,
+    age: userAge6,   
+    getInfo() {
+        return `${this.name} is ${this.age}`; // Шаблонные строки
+    }
+};
+
+// 3. Вычисляемые имена свойств (Computed Property Names)
+const dynamicKey6 = "status";
+const objES6 = {
+    [dynamicKey6]: "active" // Ключ вычисляется динамически внутри литерала
+};
+
+// 4. Классы (синтаксический сахар над прототипами)
+class PersonES6 {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHello() {
+        return `Hello, ${this.name}`;
+    }
+}
+const personInstanceES6 = new PersonES6("John");
+
+// 5. Копирование объектов (Object.assign или Spread)
+const sourceES6 = { a: 1 };
+
+// Вариант А: Object.assign
+const targetAssign = Object.assign({}, sourceES6);
+
+// Вариант Б: Spread operator (часто используется вместо Object.assign)
+const targetSpread = { ...sourceES6 };
+
+// 6. Деструктуризация объекта
+const { name, age } = userES6; // Создаст переменные name и age со значениями из объекта
+
+/* ==========================================
+   4. Улучшенные литералы объектов (ES6)
+   ========================================== */
+
+   // Исправлено имя переменной для избежания конфликта с деструктуризацией выше
+   const productName = "Product";
+   const price = 100;
+   
+   // Шорткаты (сокращения) свойств
+   const item = {
+       productName,       // Вместо name: name
+       price,      // Вместо price: price
+       category: "Electronics"
+   };
+   
+   // Вычисляемые имена свойств
+   // Исправлено имя переменной для избежания конфликта
+   const statusKey = "status";
+   const config = {
+       [statusKey]: "active",  // Ключ берется из переменной
+       [`type_${statusKey}`]: "premium" // Динамическое имя
+   };
+   
+   /* ==========================================
+      5. Методы объектов (Функции внутри объектов)
+      ========================================== */
+   
+   const calculator = {
+       // Краткая запись метода (без function и двоеточия)
+       add(a, b) {
+           return a + b;
+       },
+   
+       // Обычная функция (важно для контекста this)
+       multiply: function(a, b) {
+           return a * b;
+       },
+   
+       // Стрелочная функция (НЕ рекомендуется для методов, если нужен this)
+       // divide: (a, b) => a / b 
+   };
+   
+   /* ==========================================
+      6. Контекст this в объектах
+      ========================================== */
+   
+   const userContext = {
+       firstName: "John",
+       
+       // Обычный метод: this ссылается на объект
+       getFullName() {
+           return this.firstName;
+       },
+   
+       // Стрелочная функция: this берется из внешнего контекста (глобального)
+       // Поэтому внутри объектов их используют осторожно
+       getFullNameArrow: () => {
+           // return this.firstName; // Ошибка: this здесь не user
+           return "No access to this";
+       }
+   };
+   
+   /* ==========================================
+      7. Классы (Синтаксический сахар над объектами)
+      ========================================== */
+   
+   class Animal {
+       // Конструктор (вызывается при создании обьекта)
+       constructor(name) {
+           this.name = name;
+           this.alive = true;
+       }
+   
+       // Метод экземпляра
+       speak() {
+           return `${this.name} makes a noise`;
+       }
+   
+       // Геттер (вызывается как свойство)
+       get info() {
+           return `${this.name} is ${this.alive ? "alive" : "dead"}`;
+       }
+   
+       // Сеттер (присваивание свойству)
+       set status(value) {
+           this.alive = value;
+       }
+   
+       // Статический метод (вызывается на классе, не на экземпляре)
+       static compare(a, b) {
+           return a.name === b.name;
+       }
+   }
+   
+   
+   /* ==========================================
+      8. Работа с объектами (Утилиты ES6)
+      ========================================== */
+   
+   const sourceUtils = { a: 1, b: 2 };
+   const extra = { c: 3 };
+   
+   // Spread operator (копирование и объединение)
+   const merged = { ...sourceUtils, ...extra }; 
+   const copied = { ...sourceUtils };
+   
+   // Object.assign (альтернатива spread)
+   const assigned = Object.assign({}, sourceUtils, extra);
+   
+   // Деструктуризация с переименованием
+   const { a: alpha, b: beta } = sourceUtils;
+   
+   // Rest operator в параметрах функции
+   function printData({ name, ...restProps }) {
+       // name = "Product"
+       // restProps = { price: 100, category: "Electronics" }
+       return restProps;
+   }
+   
+   /* ==========================================
+      9. Фабричные функции (Альтернатива классам)
+      ========================================== */
+   
+   function createCircle(radius) {
+       return {
+           radius,
+           // Метод через замыкание (имеет доступ к аргументам функции)
+           getArea() {
+               return Math.PI * radius ** 2;
+           }
+       };
+   }
+   
+   const circle1 = createCircle(5);
+   const circle2 = createCircle(10);
