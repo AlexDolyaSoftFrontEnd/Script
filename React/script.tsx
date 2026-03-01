@@ -1,15 +1,5 @@
-```bash
-# 1. Инициализация проекта
-git init react-hooks-examples
-cd react-hooks-examples
-npm init -y
-npm install react react-dom
-git add . && git commit -m "chore: init project"
-```
+### useState — Toggle Sidebar
 
----
-
-### 🧩 useState — Toggle Sidebar
 ```bash
 cat > src/components/Sidebar.jsx << 'EOF'
 import { useState } from "react";
@@ -36,7 +26,8 @@ git add . && git commit -m "feat: add Sidebar with useState toggle"
 
 ---
 
-### 🎯 useEffect — Modal + Escape key
+### useEffect — Modal + Escape key
+
 ```bash
 cat > src/components/ModalWithEscape.jsx << 'EOF'
 import { useEffect, useState } from "react";
@@ -66,7 +57,8 @@ git add . && git commit -m "feat: add Modal with useEffect for Escape key"
 
 ---
 
-### 📌 useRef — Input Example
+### useRef — Input Example
+
 ```bash
 cat > src/components/InputExample.jsx << 'EOF'
 import { useRef } from "react";
@@ -97,7 +89,8 @@ git add . && git commit -m "feat: add InputExample with useRef for DOM access"
 
 ---
 
-### ⚡ useMemo — Фильтрация списка
+### useMemo — Фильтрация списка
+
 ```bash
 cat > src/components/FilteredList.jsx << 'EOF'
 import { useMemo, useState } from "react";
@@ -127,7 +120,8 @@ git add . && git commit -m "feat: add FilteredList with useMemo for search optim
 
 ---
 
-### 🔄 useCallback — Кнопка в списке
+### useCallback — Кнопка в списке
+
 ```bash
 cat > src/components/TodoList.jsx << 'EOF'
 import { useCallback, useState, memo } from "react";
@@ -160,7 +154,8 @@ git add . && git commit -m "feat: add TodoList with useCallback + React.memo"
 
 ---
 
-### 🎛️ useReducer — Форма с несколькими полями
+### useReducer — Форма с несколькими полями
+
 ```bash
 cat > src/components/FormReducer.jsx << 'EOF'
 import { useReducer } from "react";
@@ -203,7 +198,8 @@ git add . && git commit -m "feat: add FormReducer with useReducer for form state
 
 ---
 
-### ⏱️ useDebounce — Поиск с задержкой (кастомный хук)
+### useDebounce — Поиск с задержкой (кастомный хук)
+
 ```bash
 cat > src/hooks/useDebounce.js << 'EOF'
 import { useEffect, useState } from "react";
@@ -241,7 +237,8 @@ git add . && git commit -m "feat: add useDebounce custom hook + SearchInput comp
 
 ---
 
-### 🖱️ useOnClickOutside — Dropdown (кастомный хук)
+### useOnClickOutside — Dropdown (кастомный хук)
+
 ```bash
 cat > src/hooks/useOnClickOutside.js << 'EOF'
 import { useEffect } from "react";
@@ -280,7 +277,8 @@ git add . && git commit -m "feat: add useOnClickOutside hook + Dropdown componen
 
 ---
 
-### 🔒 useLockBodyScroll — Блокировка прокрутки (кастомный хук)
+### useLockBodyScroll — Блокировка прокрутки (кастомный хук)
+
 ```bash
 cat > src/hooks/useLockBodyScroll.js << 'EOF'
 import { useEffect } from "react";
@@ -316,7 +314,8 @@ git add . && git commit -m "feat: add useLockBodyScroll hook + Modal with scroll
 
 ---
 
-### 📱 useMediaQuery — Responsive UI (кастомный хук)
+### useMediaQuery — Responsive UI (кастомный хук)
+
 ```bash
 cat > src/hooks/useMediaQuery.js << 'EOF'
 import { useEffect, useState } from "react";
@@ -349,7 +348,8 @@ git add . && git commit -m "feat: add useMediaQuery hook + ResponsiveLayout comp
 
 ---
 
-### ⏪ usePrevious — Анимация изменения (кастомный хук)
+### usePrevious — Анимация изменения (кастомный хук)
+
 ```bash
 cat > src/hooks/usePrevious.js << 'EOF'
 import { useEffect, useRef } from "react";
@@ -383,7 +383,8 @@ git add . && git commit -m "feat: add usePrevious hook + CounterWithPrevious com
 
 ---
 
-### 🚀 useTransition — Поиск с большим списком
+### useTransition — Поиск с большим списком
+
 ```bash
 cat > src/components/LargeListSearch.jsx << 'EOF'
 import { useState, useTransition } from "react";
@@ -418,7 +419,7 @@ git add . && git commit -m "feat: add LargeListSearch with useTransition for non
 
 ---
 
-### 📋 Просмотр истории коммитов
+### Просмотр истории коммитов
 
 ```bash
 # Посмотреть все коммиты
@@ -431,7 +432,9 @@ git show <commit-hash>
 git log --name-only --oneline
 ```
 
-### 🗂️ Итоговая структура проекта
+---
+
+### Итоговая структура проекта
 
 ```
 src/
