@@ -1097,3 +1097,76 @@ toggleElement.classList.toggle("active", true);
 toggleElement.classList.toggle("active", false);
 
 console.groupEnd();
+
+// В JavaScript удобно использовать цикл for...of для перебора символов
+
+const text = "Привет, мир!";
+let length = 0;
+
+// Проходим по каждому символу
+for (const char of text) {
+    length++;
+}
+
+console.log("Длина строки:", length);
+
+// Фильтрация строк по минимальной длине:
+
+// Создаем массив
+const words = ["кот", "программирование", "дом", "javascript", "мир", "код"];
+
+// Переменная-условие (минимальная длина)
+const minLength = 5;
+
+// Фильтруем массив
+const filtered = [];
+for (let word of words) {
+    if (word.length >= minLength) {
+        filtered.push(word);
+    }
+}
+
+console.log("Оригинал:", words);
+console.log(`Длина >= ${minLength}:`, filtered);
+
+// Фильтрация массива объектов по свойствуу
+
+// Массив объектов
+const users = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 17 },
+    { name: "Charlie", age: 30 },
+    { name: "David", age: 16 }
+];
+
+// Переменная-условие (минимальный возраст)
+const minAge = 18;
+
+// Фильтруем
+const adults = [];
+for (let user of users) {
+    if (user.age >= minAge) {
+        adults.push(user);
+    }
+}
+
+console.log("Совершеннолетние:", adults);
+
+const wordsData = [
+    { text: "кот", type: "common", length: 3 },
+    { text: "программирование", type: "tech", length: 16 },
+    { text: "дом", type: "common", length: 3 },
+    { text: "javascript", type: "tech", length: 10 },
+    { text: "мир", type: "common", length: 3 },
+    { text: "код", type: "tech", length: 3 }
+  ];
+
+  // [3, 16, 3, 10, 3, 3]
+const wordsLengths = words.map(word => word.length);
+
+const techTerms = ["программирование", "javascript", "код", "алгоритм", "баг", "сервер"];
+
+// Или отфильтровать ваш исходный массив:
+const filteredTech = words.filter(word => 
+  ["программирование", "javascript", "код"].includes(word)
+);
