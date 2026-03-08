@@ -433,28 +433,3 @@ git log --name-only --oneline
 ```
 
 ---
-
-### Итоговая структура проекта
-
-```
-src/
-├── components/
-│   ├── Sidebar.jsx
-│   ├── ModalWithEscape.jsx
-│   ├── InputExample.jsx
-│   ├── FilteredList.jsx
-│   ├── TodoList.jsx
-│   ├── FormReducer.jsx
-│   ├── SearchInput.jsx
-│   ├── Dropdown.jsx
-│   ├── ModalScrollLock.jsx
-│   ├── ResponsiveLayout.jsx
-│   ├── CounterWithPrevious.jsx
-│   └── LargeListSearch.jsx
-└── hooks/
-    ├── useDebounce.js
-    ├── useOnClickOutside.js
-    ├── useLockBodyScroll.js
-    ├── useMediaQuery.js
-    └── usePrevious.js
-```

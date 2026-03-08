@@ -1,20 +1,20 @@
 /**
  * Функция для обработки меню с использованием switch-case.
- * @param {Array} menuItems - Массив объектов меню.
- * @param {Object} options - Объект с настройками обработки.
- * @param {string} options.filterBy - Тип фильтрации: 'category', 'price', 'popular', 'all'.
- * @param {string|number} options.filterValue - Значение для фильтрации (название категории, цена и т.д.).
- * @param {string} options.sortBy - Тип сортировки: 'default', 'price-asc', 'price-desc', 'lemonade-last'.
- * @returns {Array} - Обработанный массив меню.
+ * Array menuItems - Массив объектов меню.
+ * Object options - Объект с настройками обработки.
+ * string options.filterBy - Тип фильтрации: 'category', 'price', 'popular', 'all'.
+ * string|number options.filterValue - Значение для фильтрации (название категории, цена и т.д.).
+ * string options.sortBy - Тип сортировки: 'default', 'price-asc', 'price-desc', 'lemonade-last'.
+ * Array - Обработанный массив меню.
  */
 function processMenuAdvanced(menuItems, options = {}) {
     const { filterBy = 'all', filterValue, sortBy = 'lemonade-last' } = options;
-    
     let result = [...menuItems]; // Создаем копию массива, чтобы не мутировать оригинал
   
     // ==========================================
     // БЛОК 1: ФИЛЬТРАЦИЯ (switch-case)
     // ==========================================
+
     switch (filterBy) {
       case 'category':
         // Фильтруем по точному совпадению категории
@@ -45,8 +45,9 @@ function processMenuAdvanced(menuItems, options = {}) {
     }
   
     // ==========================================
-    // БЛОК 2: СОРТИРОВКА (switch-case)
+    // БЛОК 2: СОРТИРОВКА 
     // ==========================================
+
     switch (sortBy) {
       case 'price-asc':
         // Сортировка по возрастанию цены (от дешевых к дорогим)
@@ -169,3 +170,4 @@ function processMenuAdvanced(menuItems, options = {}) {
   });
   console.log(fullMenuSorted.map(item => item.name));
   // Вывод: ['Аджапсандалі', 'Горячий Чахохбили', 'Суп «Харчо»', 'Грузинский лимонад']
+  

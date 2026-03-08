@@ -73,3 +73,4 @@ function processMenuSimple(menuItems, options = {}) {
     sortBy: 'price-asc'
   });
   console.log("До 200 грн:", cheapMenu);
+  

@@ -1,10 +1,10 @@
 /**
  * Функция для обработки меню с условиями.
- * @param {Array} menuItems - Массив объектов меню.
- * @param {Object} filters - Объект с условиями фильтрации.
- * @param {string} filters.category - Фильтр по категории (например, 'meat', 'vegetable').
- * @param {number} filters.maxPrice - Максимальная цена.
- * @returns {Array} - Отфильтрованный и отсортированный массив.
+ * Array menuItems - Массив объектов меню.
+ * Object filters - Объект с условиями фильтрации.
+ * string} filters.category - Фильтр по категории (например, 'meat', 'vegetable').
+ * number filters.maxPrice - Максимальная цена.
+ * Array - Отфильтрованный и отсортированный массив.
  */
 
 function processMenu(menuItems, filters = {}) {
@@ -72,3 +72,4 @@ function processMenu(menuItems, filters = {}) {
   // Пример 3: Получить только напитки (Лимонад будет единственным или последним среди напитков)
   const drinks = processMenu(menuData, { category: 'drink' });
   console.log("Напитки:", drinks);
+  
